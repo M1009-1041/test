@@ -1,304 +1,79 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的個人網站 | My Portfolio</title>
-    <style>
-        /* --- CSS 樣式區 --- */
-        :root {
-            /* 淺色模式變數 */
-            --bg-color: #f3f4f6;
-            --text-color: #1f2937;
-            --card-bg: #ffffff;
-            --primary-color: #4f46e5;
-            --secondary-color: #818cf8;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --transition: all 0.3s ease;
-        }
-
-        /* 深色模式變數 */
-        [data-theme="dark"] {
-            --bg-color: #111827;
-            --text-color: #f3f4f6;
-            --card-bg: #1f2937;
-            --primary-color: #6366f1;
-            --secondary-color: #a5b4fc;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', "Microsoft JhengHei", sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: var(--transition);
-            line-height: 1.6;
-        }
-
-        /* 導覽列 */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* 主題切換按鈕 */
-        .theme-toggle {
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 2px solid var(--primary-color);
-            background: transparent;
-            color: var(--text-color);
-            font-weight: bold;
-            transition: var(--transition);
-        }
-
-        .theme-toggle:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* 主要內容區 */
-        main {
-            margin-top: 80px; /* 避開固定導覽列 */
-            padding: 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Hero 區塊 (首頁大圖) */
-        .hero {
-            text-align: center;
-            padding: 4rem 1rem;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-color);
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
-            transition: transform 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-        }
-
-        /* 卡片區塊 */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        /* 頁尾 */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            color: var(--text-color);
-            opacity: 0.7;
-        }
-
-        /* 手機版適配 */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* 簡單隱藏選單，手機版可再擴充 */
-        }
-
-        /* 動畫 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <title>專題報告介紹</title>
+    <!-- 引入外部 CSS 檔案 -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- 導覽列 -->
-    <nav>
-        <div class="logo">MyWebsite</div>
-        <div class="nav-links">
-            <a href="#home">首頁</a>
-            <a href="#features">特色</a>
-            <a href="#about">關於我</a>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">專題名稱 Project Title</div>
+            <nav class="nav-links">
+                <a href="#">首頁</a>
+                <a href="#">關於專題</a>
+                <a href="#">成員介紹</a>
+            </nav>
         </div>
-        <button class="theme-toggle" id="themeBtn">🌙 切換模式</button>
-    </nav>
+    </header>
 
-    <!-- 主要內容 -->
-    <main>
-        <!-- 首頁歡迎區 -->
-        <section id="home" class="hero">
-            <h1>歡迎來到我的個人網站</h1>
-            <p>這是一個經過優化的現代化網頁模板。無論是在手機還是電腦上，都能呈現完美的視覺效果。</p>
-            <a href="#features" class="cta-button">了解更多</a>
+    <!-- 主要內容區 -->
+    <main class="container main-content">
+        
+        <!-- 標題與簡介 -->
+        <section class="intro-section">
+            <h1>專題摘要介紹</h1>
+            <p>
+                歡迎來到我們的專題介紹網頁。這是一個關於創新技術應用的專題報告。在這裡，我們將探討如何透過現代化的解決方案來改善生活中的問題。我們的目標是建立一個高效、易用且具備未來擴充性的系統。
+            </p>
         </section>
 
-        <!-- 特色卡片區 -->
-        <section id="features">
-            <h2 style="text-align: center; margin-bottom: 2rem;">網站特色</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>📱 響應式設計</h3>
-                    <p>網頁會根據螢幕大小自動調整排版，無論使用 iPhone、iPad 還是桌機瀏覽，體驗都非常流暢。</p>
-                </div>
-                <div class="card">
-                    <h3>🎨 深色模式</h3>
-                    <p>點擊右上角的按鈕試試看！內建變數系統讓切換主題變得超級簡單，保護眼睛不刺眼。</p>
-                </div>
-                <div class="card">
-                    <h3>🚀 極速加載</h3>
-                    <p>使用純 HTML/CSS/JS 打造，沒有笨重的框架，打開網頁的速度就是快！</p>
-                </div>
+        <!-- 圖片與詳細內容 (包含互動按鈕) -->
+        <section class="content-grid">
+            
+            <!-- 圖片位置 -->
+            <div class="image-box">
+                <!-- 請將 src 替換成您自己的圖片路徑 -->
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="專題示意圖">
+            </div>
+
+            <!-- 文字內容與按鈕 -->
+            <div class="text-box">
+                <h2>核心技術與架構</h2>
+                <p>
+                    本專題採用了最新的開發框架，結合了前端的使用者體驗優化與後端的數據處理能力。
+                </p>
+                <ul>
+                    <li>響應式網頁設計 (RWD)</li>
+                    <li>直觀的使用者介面</li>
+                    <li>即時數據分析功能</li>
+                </ul>
+
+                <!-- 互動式元素：按鈕 -->
+                <button id="toggleBtn" class="btn">了解更多細節</button>
             </div>
         </section>
 
-        <!-- 關於區塊 -->
-        <section id="about" style="margin-top: 4rem; background: var(--card-bg); padding: 2rem; border-radius: 15px;">
-            <h2>關於這個專案</h2>
-            <p style="margin-top: 1rem;">
-                這是我在學習網頁開發過程中的練習作品。使用了 GitHub Pages 進行託管，並結合了 Flexbox 和 CSS Grid 佈局技術。
-                <br><br>
-                如果你喜歡這個設計，歡迎參考我的程式碼！
+        <!-- 隱藏的詳細資訊區塊 (由 JS 控制) -->
+        <section id="moreInfo" class="hidden-info">
+            <h3>詳細規格說明</h3>
+            <p>
+                這是點擊按鈕後才會顯示的額外資訊。您可以在這裡放入更深入的技術細節、團隊成員名單或是專題的開發時程表。
             </p>
         </section>
+
     </main>
 
     <!-- 頁尾 -->
     <footer>
-        <p>© 2025 My Portfolio. Built with ❤️ and GitHub Pages.</p>
+        <p>&copy; 2023 專題報告小組. All rights reserved.</p>
     </footer>
 
-    <script>
-        // --- JavaScript 互動區 ---
-
-        // 取得按鈕和 html 元素
-        const themeBtn = document.getElementById('themeBtn');
-        const htmlElement = document.documentElement;
-
-        // 檢查使用者是否已經有儲存的主題設定
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            htmlElement.setAttribute('data-theme', currentTheme);
-            updateButtonText(currentTheme);
-        }
-
-        // 按鈕點擊事件
-        themeBtn.addEventListener('click', () => {
-            const current = htmlElement.getAttribute('data-theme');
-            
-            if (current === 'dark') {
-                htmlElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light'); // 記住設定
-                updateButtonText('light');
-            } else {
-                htmlElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark'); // 記住設定
-                updateButtonText('dark');
-            }
-        });
-
-        // 更新按鈕文字
-        function updateButtonText(theme) {
-            if (theme === 'dark') {
-                themeBtn.textContent = '☀️ 亮色模式';
-            } else {
-                themeBtn.textContent = '🌙 深色模式';
-            }
-        }
-
-        // 平滑捲動效果 (針對舊版瀏覽器)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // 簡單的歡迎訊息
-        console.log("歡迎來到我的網站！程式碼載入成功！");
-    </script>
+    <!-- 引入外部 JS 檔案 -->
+    <script src="script.js"></script>
 </body>
 </html>
