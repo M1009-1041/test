@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專題報告介紹</title>
+    <!-- 引入外部 CSS 檔案 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">專題名稱 Project Title</div>
+            <nav class="nav-links">
+                <a href="#">首頁</a>
+                <a href="#">關於專題</a>
+                <a href="#">成員介紹</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="container main-content">
+        
+        <!-- 標題與簡介 -->
+        <section class="intro-section">
+            <h1>專題摘要介紹</h1>
+            <p>
+                歡迎來到我們的專題介紹網頁。這是一個關於創新技術應用的專題報告。在這裡，我們將探討如何透過現代化的解決方案來改善生活中的問題。我們的目標是建立一個高效、易用且具備未來擴充性的系統。
+            </p>
+        </section>
+
+        <!-- 圖片與詳細內容 (包含互動按鈕) -->
+        <section class="content-grid">
+            
+            <!-- 圖片位置 -->
+            <div class="image-box">
+                <!-- 請將 src 替換成您自己的圖片路徑 -->
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="專題示意圖">
+            </div>
+
+            <!-- 文字內容與按鈕 -->
+            <div class="text-box">
+                <h2>核心技術與架構</h2>
+                <p>
+                    本專題採用了最新的開發框架，結合了前端的使用者體驗優化與後端的數據處理能力。
+                </p>
+                <ul>
+                    <li>響應式網頁設計 (RWD)</li>
+                    <li>直觀的使用者介面</li>
+                    <li>即時數據分析功能</li>
+                </ul>
+
+                <!-- 互動式元素：按鈕 -->
+                <button id="toggleBtn" class="btn">了解更多細節</button>
+            </div>
+        </section>
+
+        <!-- 隱藏的詳細資訊區塊 (由 JS 控制) -->
+        <section id="moreInfo" class="hidden-info">
+            <h3>詳細規格說明</h3>
+            <p>
+                這是點擊按鈕後才會顯示的額外資訊。您可以在這裡放入更深入的技術細節、團隊成員名單或是專題的開發時程表。
+            </p>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2023 專題報告小組. All rights reserved.</p>
+    </footer>
+
+    <!-- 引入外部 JS 檔案 -->
+    <script src="script.js"></script>
+</body>
+</html>
