@@ -1,304 +1,381 @@
-
-<html lang="zh-Hant">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的個人網站 | My Portfolio</title>
+    <title>個人作品集 | My Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
     <style>
-        /* --- CSS 樣式區 --- */
+        /* --- CSS 變數系統 --- */
         :root {
-            /* 淺色模式變數 */
-            --bg-color: #f3f4f6;
-            --text-color: #1f2937;
-            --card-bg: #ffffff;
-            --primary-color: #4f46e5;
-            --secondary-color: #818cf8;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --transition: all 0.3s ease;
+            /* 淺色模式 (Light Mode) */
+            --primary-color: #2563eb;       /* 專業藍 */
+            --primary-hover: #1d4ed8;
+            --bg-body: #f8fafc;             /* 淺灰白背景，不刺眼 */
+            --bg-card: #ffffff;
+            --text-main: #1e293b;           /* 深灰黑文字 */
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --nav-bg: rgba(255, 255, 255, 0.85);
         }
 
-        /* 深色模式變數 */
         [data-theme="dark"] {
-            --bg-color: #111827;
-            --text-color: #f3f4f6;
-            --card-bg: #1f2937;
-            --primary-color: #6366f1;
-            --secondary-color: #a5b4fc;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            /* 深色模式 (Dark Mode) */
+            --primary-color: #60a5fa;
+            --primary-hover: #93c5fd;
+            --bg-body: #0f172a;             /* 深藍黑背景 */
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3);
+            --shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.4);
+            --nav-bg: rgba(15, 23, 42, 0.85);
         }
 
+        /* --- 全局設定 --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', "Microsoft JhengHei", sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: var(--transition);
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
-        /* 導覽列 */
-        nav {
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- 導覽列 (Glassmorphism) --- */
+        .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-            padding: 1rem 2rem;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 5%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            transition: var(--transition);
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
             font-weight: 500;
-            transition: color 0.3s;
+            color: var(--text-secondary);
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
         }
 
-        /* 主題切換按鈕 */
         .theme-toggle {
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 2px solid var(--primary-color);
             background: transparent;
-            color: var(--text-color);
-            font-weight: bold;
-            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
         }
 
         .theme-toggle:hover {
-            background: var(--primary-color);
-            color: white;
+            background-color: var(--bg-card);
+            transform: scale(1.1);
         }
 
-        /* 主要內容區 */
-        main {
-            margin-top: 80px; /* 避開固定導覽列 */
-            padding: 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Hero 區塊 (首頁大圖) */
+        /* --- Hero Section (首頁) --- */
         .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 4rem 1rem;
-            animation: fadeIn 1s ease-out;
+            padding: 0 20px;
+            margin-top: -70px; /* 抵消 Navbar 高度 */
+            padding-top: 70px;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-color);
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
-            transition: transform 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-        }
-
-        /* 卡片區塊 */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
+        .hero h1 span {
             color: var(--primary-color);
         }
 
-        /* 頁尾 */
-        footer {
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* --- 區塊通用樣式 --- */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
             text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+        }
+
+        /* --- 技能/特色區塊 --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
             padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* --- 關於我 --- */
+        .about-content {
+            background-color: var(--bg-card);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        /* --- 頁尾 --- */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 5%;
+            text-align: center;
             margin-top: 4rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            color: var(--text-color);
-            opacity: 0.7;
         }
 
-        /* 手機版適配 */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- 手機版適配 --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* 簡單隱藏選單，手機版可再擴充 */
-        }
-
-        /* 動畫 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; } /* 簡化版：手機先隱藏選單，實際專案可加漢堡選單 */
         }
     </style>
 </head>
 <body>
 
-    <!-- 導覽列 -->
-    <nav>
-        <div class="logo">MyWebsite</div>
-        <div class="nav-links">
-            <a href="#home">首頁</a>
-            <a href="#features">特色</a>
-            <a href="#about">關於我</a>
-        </div>
-        <button class="theme-toggle" id="themeBtn">🌙 切換模式</button>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="ri-code-s-slash-line"></i> Portfolio
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">首頁</a></li>
+            <li><a href="#skills">專業技能</a></li>
+            <li><a href="#about">關於我</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle" aria-label="切換主題">
+            <i class="ri-moon-line"></i>
+        </button>
     </nav>
 
-    <!-- 主要內容 -->
-    <main>
-        <!-- 首頁歡迎區 -->
-        <section id="home" class="hero">
-            <h1>歡迎來到我的個人網站</h1>
-            <p>這是一個經過優化的現代化網頁模板。無論是在手機還是電腦上，都能呈現完美的視覺效果。</p>
-            <a href="#features" class="cta-button">了解更多</a>
-        </section>
+    <header id="home" class="hero">
+        <h1>你好，我是 Alex <br><span>專注細節的前端工程師</span></h1>
+        <p>致力於打造高效能、高互動且具備完美使用者體驗的現代化網頁。</p>
+        <a href="#skills" class="btn">查看我的作品</a>
+    </header>
 
-        <!-- 特色卡片區 -->
-        <section id="features">
-            <h2 style="text-align: center; margin-bottom: 2rem;">網站特色</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>📱 響應式設計</h3>
-                    <p>網頁會根據螢幕大小自動調整排版，無論使用 iPhone、iPad 還是桌機瀏覽，體驗都非常流暢。</p>
-                </div>
-                <div class="card">
-                    <h3>🎨 深色模式</h3>
-                    <p>點擊右上角的按鈕試試看！內建變數系統讓切換主題變得超級簡單，保護眼睛不刺眼。</p>
-                </div>
-                <div class="card">
-                    <h3>🚀 極速加載</h3>
-                    <p>使用純 HTML/CSS/JS 打造，沒有笨重的框架，打開網頁的速度就是快！</p>
-                </div>
+    <section id="skills">
+        <div class="section-title">
+            <h2>核心技能</h2>
+            <p>What I Bring to the Table</p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="ri-layout-masonry-line"></i></div>
+                <h3>響應式網頁開發</h3>
+                <p>精通 HTML5, CSS3 與 Flex/Grid 佈局，確保網頁在手機、平板與桌機上都能呈現完美視覺。</p>
             </div>
-        </section>
+            
+            <div class="skill-card">
+                <div class="skill-icon"><i class="ri-javascript-line"></i></div>
+                <h3>前端互動邏輯</h3>
+                <p>熟悉 JavaScript (ES6+) 與現代化框架，能製作流暢的動畫與複雜的資料處理邏輯。</p>
+            </div>
 
-        <!-- 關於區塊 -->
-        <section id="about" style="margin-top: 4rem; background: var(--card-bg); padding: 2rem; border-radius: 15px;">
-            <h2>關於這個專案</h2>
-            <p style="margin-top: 1rem;">
-                這是我在學習網頁開發過程中的練習作品。使用了 GitHub Pages 進行託管，並結合了 Flexbox 和 CSS Grid 佈局技術。
-                <br><br>
-                如果你喜歡這個設計，歡迎參考我的程式碼！
-            </p>
-        </section>
-    </main>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="ri-palette-line"></i></div>
+                <h3>UI/UX 設計思維</h3>
+                <p>不僅僅是寫程式，更注重使用者體驗。善於使用深色模式與現代化配色提升產品質感。</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- 頁尾 -->
+    <section id="about">
+        <div class="section-title">
+            <h2>關於我</h2>
+        </div>
+        <div class="about-content">
+            <p>這是我在網頁開發旅程中的個人展示站。我熱衷於研究新技術，並將其應用於實際專案中。<br><br>
+            從設計稿到程式碼落地，我享受每一個創造的過程。如果您正在尋找一位對技術有熱情、對細節有堅持的合作夥伴，歡迎隨時與我聯繫。</p>
+        </div>
+    </section>
+
     <footer>
-        <p>© 2025 My Portfolio. Built with ❤️ and GitHub Pages.</p>
+        <div class="social-links">
+            <a href="https://github.com/m1009-1041" target="_blank"><i class="ri-github-fill"></i></a>
+            <a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a>
+            <a href="mailto:your-email@example.com"><i class="ri-mail-send-fill"></i></a>
+        </div>
+        <p class="copyright">© 2025 Alex's Portfolio. Built with HTML, CSS & Passion.</p>
     </footer>
 
     <script>
-        // --- JavaScript 互動區 ---
-
-        // 取得按鈕和 html 元素
-        const themeBtn = document.getElementById('themeBtn');
-        const htmlElement = document.documentElement;
-
-        // 檢查使用者是否已經有儲存的主題設定
+        // 取得按鈕與圖示元素
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = toggleBtn.querySelector('i');
+        
+        // 檢查使用者原本的主題偏好
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme) {
-            htmlElement.setAttribute('data-theme', currentTheme);
-            updateButtonText(currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+            }
         }
 
-        // 按鈕點擊事件
-        themeBtn.addEventListener('click', () => {
-            const current = htmlElement.getAttribute('data-theme');
+        // 切換按鈕點擊事件
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
             
-            if (current === 'dark') {
-                htmlElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light'); // 記住設定
-                updateButtonText('light');
-            } else {
-                htmlElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark'); // 記住設定
-                updateButtonText('dark');
-            }
-        });
-
-        // 更新按鈕文字
-        function updateButtonText(theme) {
             if (theme === 'dark') {
-                themeBtn.textContent = '☀️ 亮色模式';
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
             } else {
-                themeBtn.textContent = '🌙 深色模式';
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
             }
-        }
-
-        // 平滑捲動效果 (針對舊版瀏覽器)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
-        
-        // 簡單的歡迎訊息
-        console.log("歡迎來到我的網站！程式碼載入成功！");
     </script>
 </body>
 </html>
